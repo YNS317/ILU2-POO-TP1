@@ -8,6 +8,7 @@ public class Village {
 	private Chef chef;
 	private Gaulois[] villageois;
 	private int nbVillageois = 0;
+	private Marche marche;
 
 	public Village(String nom, int nbVillageoisMaximum) {
 		this.nom = nom;
@@ -45,15 +46,81 @@ public class Village {
 	public String afficherVillageois() {
 		StringBuilder chaine = new StringBuilder();
 		if (nbVillageois < 1) {
-			chaine.append("Il n'y a encore aucun habitant au village du chef "
-					+ chef.getNom() + ".\n");
+			chaine.append("Il n'y a encore aucun habitant au village du chef " + chef.getNom() + ".\n");
 		} else {
-			chaine.append("Au village du chef " + chef.getNom()
-					+ " vivent les légendaires gaulois :\n");
+			chaine.append("Au village du chef " + chef.getNom() + " vivent les légendaires gaulois :\n");
 			for (int i = 0; i < nbVillageois; i++) {
 				chaine.append("- " + villageois[i].getNom() + "\n");
 			}
 		}
 		return chaine.toString();
 	}
+
+	private static class Marche {
+		private Etal[] etals;
+
+		public Marche(int nbEtals) {
+			etals = new Etal[nbEtals];
+			for (int i = 0; i < nbEtals; i++) {
+				etals[i] = new Etal();
+			}
+		}
+
+		public void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
+			if (indiceEtal >= 0 && indiceEtal < etals.length) {
+				etals[indiceEtal].occuperEtal(vendeur, produit, nbProduit);
+			} else {
+				System.out.println("L'indice d'étal spécifié est invalide.");
+			}
+		}
+
+		public int trouverEtalLibre() {
+			for (int i = 0; i < etals.length; i++) {
+				if (!etals[i].isEtalOccupe()) {
+					return i;
+				}
+			}
+			return -1;
+
+		}
+
+		Etal[] trouverEtals(String produit) {
+        	int cbEtals = 0 ;
+			for (int i = 0 ; i < etals.length ; i++) {
+        		cbEtals++;
+        		
+        	}
+        }
+
+		public Etal trouverVendeur(Gaulois gaulois) {
+			for (int i = 0; i < etals.length; i++) {
+				Etal etal = etals[i];
+				if (etal.isEtalOccupe() && etal.getVendeur().equals(gaulois)) {
+					return etal;
+				}
+			}
+			return null;
+		}
+		public String afficherMarche() {
+		    StringBuilder builder = new StringBuilder();
+		    int nbEtalVide = 0;
+
+		    for (Etal etal : etals) {
+		        if (etal.isEtalOccupe()) {
+		            builder.append(etal.afficherEtal()).append("\n");
+		        } else {
+		            nbEtalVide++;
+		        }
+		    }
+
+		    if (nbEtalVide > 0) {
+		        builder.append("Il reste ").append(nbEtalVide).append(" étals non utilisés dans le marché.\n");
+		    }
+
+		    return builder.toString();
+		}
+
+
+	}
+
 }
