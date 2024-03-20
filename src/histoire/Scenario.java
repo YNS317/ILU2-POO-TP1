@@ -9,9 +9,9 @@ import villagegaulois.Village;
 public class Scenario {
 
 	public static void main(String[] args) {
-//		Village village = new Village("le village des irréductibles", 10, 5);
-//		Chef abraracourcix = new Chef("Abraracourcix", 10, village);
-//		village.setChef(abraracourcix);
+		Village village = new Village("le village des irréductibles", 10, 5);
+		Chef abraracourcix = new Chef("Abraracourcix", 10, village);
+		village.setChef(abraracourcix);
 		Druide druide = new Druide("Panoramix", 2, 5, 10);
 		Gaulois obelix = new Gaulois("Obélix", 25);
 		Gaulois asterix = new Gaulois("Astérix", 8);
@@ -35,10 +35,10 @@ public class Scenario {
 //		System.out.println(village.installerVendeur(druide, "fleurs", 10));
 
 //		System.out.println(village.rechercherVendeursProduit("fleurs"));
-//		Etal etalFleur = village.rechercherEtal(bonemine);
-//		System.out.println(etalFleur.acheterProduit(10, abraracourcix));
-//		System.out.println(etalFleur.acheterProduit(15, obelix));
-//		System.out.println(etalFleur.acheterProduit(15, assurancetourix));
+		Etal etalFleur = village.rechercherEtal(bonemine);
+		System.out.println(etalFleur.acheterProduit(10, abraracourcix));
+		System.out.println(etalFleur.acheterProduit(15, obelix));
+		System.out.println(etalFleur.acheterProduit(15, assurancetourix));
 //		System.out.println(village.partirVendeur(bonemine));
 //		System.out.println(village.afficherMarche());
 	}
