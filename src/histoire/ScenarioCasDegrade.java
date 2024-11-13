@@ -1,7 +1,7 @@
-package histoire;
+package histoire;  // Assure-toi que c'est dans le bon package
 
-import villagegaulois.Village;
-import villagegaulois.VillageSansChefException;
+import villagegaulois.Village;  // Importation de Village
+import villagegaulois.VillageSansChefException;  // Importation de l'exception
 import personnages.Gaulois;
 import personnages.Chef;
 
@@ -9,7 +9,7 @@ public class ScenarioCasDegrade {
     public static void main(String[] args) {
         // Création d'un village sans chef
         Village village = new Village("Village des Gaulois", 10, 5);
-        
+
         try {
             // Tentative d'affichage des villageois sans avoir de chef
             String villageois = village.afficherVillageois();
